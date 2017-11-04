@@ -1,6 +1,6 @@
 /*!
 Theme Name: White Hall
-Theme URI: http://underscores.me/
+Theme URI: https://github.com/creativita-digitale/whitehall-theme
 Author: Alex Righetto
 Author URI: https://github.com/creativita-digitale/whitehall-theme
 Description: Great blogger and YouTuber ready theme
@@ -265,7 +265,7 @@ select,
 optgroup,
 textarea {
 	color: #404040;
-	font-family: sans-serif;
+	font-family: "Open Sans", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Arial, sans-serif;
 	font-size: 16px;
 	font-size: 1rem;
 	line-height: 1.5;
@@ -273,6 +273,7 @@ textarea {
 
 h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	font-family: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 p {
@@ -601,14 +602,16 @@ a:hover, a:active {
 .screen-reader-text {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
-	clip-path: inset(50%);
+	-webkit-clip-path: inset(50%);
+	        clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
 	padding: 0;
 	position: absolute !important;
 	width: 1px;
-	word-wrap: normal !important; /* Many screen reader and browser combinations announce broken words as they would appear visually. */
+	word-wrap: normal !important;
+	/* Many screen reader and browser combinations announce broken words as they would appear visually. */
 }
 
 .screen-reader-text:focus {
@@ -616,7 +619,8 @@ a:hover, a:active {
 	border-radius: 3px;
 	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
 	clip: auto !important;
-	clip-path: none;
+	-webkit-clip-path: none;
+	        clip-path: none;
 	color: #21759b;
 	display: block;
 	font-size: 14px;
@@ -851,3 +855,5 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+/*# sourceMappingURL=../whitehall-theme/sass/maps/style.css.map */

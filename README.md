@@ -8,6 +8,7 @@ Features
 * Minimal design
 * Responsive fonts
 * Great use of social networks API
+* Great support of media content
 * widgetized
 * Fast
 * Great support pf plugins : WPML, WOOCOMMERCE, JETPACK, MAILCHIMP, UBERMENU

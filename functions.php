@@ -42,6 +42,13 @@ if ( ! function_exists( 'whitehall_theme_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/*
+		 * Enable support for Post Formats on posts.
+		 *
+		 * @link https://codex.wordpress.org/Post_Formats
+		 */
+		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'image', 'video', 'quote', 'link' ) );
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'whitehall-theme' ),
@@ -117,6 +124,12 @@ add_action( 'widgets_init', 'whitehall_theme_widgets_init' );
  * Enqueue scripts and styles.
  */
 function whitehall_theme_scripts() {
+
+	// enqueue google fonts
+
+	//https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700|Open+Sans
+	wp_enqueue_style( 'whitehall-theme-fonts', 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700|Open+Sans');
+
 	wp_enqueue_style( 'whitehall-theme-style', get_stylesheet_uri() );
 
 	wp_enqueue_script( 'whitehall-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
@@ -129,7 +142,9 @@ function whitehall_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'whitehall_theme_scripts' );
 
-/* IE js header. --------------------------------------------------------------------*/
+/**
+ * Enqueue scripts and styles for IE in header.
+ */
 function whitehall_theme_ie_js_header() {
 	echo '<!--[if lt IE 9]>'. "\n";
 	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/html5.js' ) . '"></script>'. "\n";
@@ -139,7 +154,9 @@ function whitehall_theme_ie_js_header() {
 add_action( 'wp_head', 'whitehall_theme_ie_js_header' );
 
 
-/* IE js footer. --------------------------------------------------------------------*/
+/**
+ * Enqueue scripts and styles for IE in Footer.
+ */
 function whitehall_theme_ie_js_footer() {
 	echo '<!--[if lt IE 9]>'. "\n";
 	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/respond.js' ) . '"></script>'. "\n";
