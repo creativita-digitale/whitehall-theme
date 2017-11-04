@@ -90,6 +90,53 @@ if ( ! function_exists( 'whitehall_theme_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'whitehall_theme_setup' );
 
+
+/**
+ * Register custom fonts.
+ */
+function whitehall_theme_fonts_url() {
+	$fonts_url = '';
+	//https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700|Open+Sans
+	/*
+	 * Translators: If there are characters in your language that are not
+	 * supported by Cormorat Garamond, Open Sans and Montserrat, translate this to 'off'. Do not translate
+	 * into your own language.
+	 */
+	$cormorat_garamond = _x( 'on', 'Cormorat Garamond font: on or off', 'whitehall-theme' );
+	$montserrat = _x( 'on', 'Montserrat font: on or off', 'whitehall-theme' );
+	$open_sans = _x( 'on', 'Garamond font: on or off', 'whitehall-theme' );
+
+	$font_families = array();
+
+	if ( 'off' !== $cormorat_garamond ) {
+		$font_families[] = 'Cormorant Garamond:400,700';
+	}
+
+	if ( 'off' !== $montserrat ) {
+		$font_families[] = 'Montserrat:400,700';
+	}
+
+	if ( 'off' !== $open_sans ) {
+		$font_families[] = 'Open Sans';
+	}
+
+	if ( in_array( 'on', array( $cormorat_garamond, $montserrat, $open_sans) ) ) {
+
+
+
+
+		$query_args = array(
+			'family' => urlencode( implode( '|', $font_families ) ),
+			//'subset' => urlencode( 'latin' ),
+		);
+
+		$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
+	}
+
+	return esc_url_raw( $fonts_url );
+}
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
@@ -121,14 +168,25 @@ function whitehall_theme_widgets_init() {
 add_action( 'widgets_init', 'whitehall_theme_widgets_init' );
 
 /**
+ * Handles JavaScript detection.
+ *
+ * Adds a `js` class to the root `<html>` element when JavaScript is detected.
+ *
+ * @since White Hall 1.0
+ */
+function whitehall_theme_javascript_detection() {
+	echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
+}
+add_action( 'wp_head', 'whitehall_theme_javascript_detection', 0 );
+/**
  * Enqueue scripts and styles.
  */
 function whitehall_theme_scripts() {
 
 	// enqueue google fonts
-
+	//https://fonts.googleapis.com/css?family=Cormorant%2BGaramond%3A400%2C700%7CGaramond%3A400%2C700%7COpen%2BSans&subset=latin&ver=4.8.3
 	//https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700|Open+Sans
-	wp_enqueue_style( 'whitehall-theme-fonts', 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,700|Montserrat:400,700|Open+Sans');
+	wp_enqueue_style( 'whitehall-theme-fonts', whitehall_theme_fonts_url() );
 
 	wp_enqueue_style( 'whitehall-theme-style', get_stylesheet_uri() );
 
