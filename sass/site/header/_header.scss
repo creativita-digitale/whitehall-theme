@@ -28,13 +28,19 @@
 
 }
 
+.custom-logo-link{
+
+  display: block;
+
+}
+
 .site-title {
   margin: 0;
   padding: 0;
   font-size: 1.602em;
-  font-weight: 800;
+  font-weight: 300;
   line-height: 1;
-  
+  //font-family: $font__headings;
   a {
     text-decoration: none;
     
@@ -61,6 +67,7 @@
 
   .site-branding {
     width: 35%;
+    flex: 1 0 auto;
   }
 
   .site-navigation {
@@ -68,3 +75,4 @@
   }
 
 }
+@import 'header-menu';

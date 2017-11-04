@@ -24,7 +24,7 @@
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'whitehall-theme' ); ?></a>
 
-	<?php if ( get_header_image() ) : ?>
+	<?php if ( get_header_image() && is_front_page() ) : ?>
         <figure class="header-image">
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
                 <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
@@ -35,7 +35,9 @@
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php
-			the_custom_logo();
+
+            the_custom_logo();
+
 			if ( is_front_page() && is_home() ) : ?>
 				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
 			<?php else : ?>

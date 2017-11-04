@@ -51,7 +51,8 @@ if ( ! function_exists( 'whitehall_theme_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'whitehall-theme' ),
+			'menu-1' => esc_html__( 'Header', 'whitehall-theme' ),
+			'menu-2' => esc_html__( 'Secondary', 'whitehall-theme' ),
 		) );
 
 		/*
@@ -210,7 +211,13 @@ function whitehall_theme_scripts() {
 
 	wp_enqueue_style( 'whitehall-theme-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'whitehall-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'whitehall-theme-navigation', get_theme_file_uri('/js/navigation.js') , array('jquery'), '20151215', true );
+
+	wp_localize_script( 'whitehall-theme-navigation', 'whitehallthemeScreenReaderText', array(
+
+		'expand' => __( 'Expand child menu', 'whitehall-theme' ),
+		'collapse' => __( 'Collapse child menu', 'whitehall-theme' ),
+	));
 
 	wp_enqueue_script( 'whitehall-theme-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
