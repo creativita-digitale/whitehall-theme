@@ -1,3 +1,14 @@
+.header-image {
+
+  max-height: 60vh;
+  overflow: hidden;
+
+  img {
+    display:block;
+    width: 100vw;
+  }
+}
+
 .site-header {
   //we can position other thing inside later
   position: relative;
