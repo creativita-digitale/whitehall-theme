@@ -129,6 +129,24 @@ function whitehall_theme_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'whitehall_theme_scripts' );
 
+/* IE js header. --------------------------------------------------------------------*/
+function whitehall_theme_ie_js_header() {
+	echo '<!--[if lt IE 9]>'. "\n";
+	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/html5.js' ) . '"></script>'. "\n";
+	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/selectivizr.js' ) . '"></script>'. "\n";
+	echo '<![endif]-->'. "\n";
+}
+add_action( 'wp_head', 'whitehall_theme_ie_js_header' );
+
+
+/* IE js footer. --------------------------------------------------------------------*/
+function whitehall_theme_ie_js_footer() {
+	echo '<!--[if lt IE 9]>'. "\n";
+	echo '<script src="' . esc_url( get_template_directory_uri() . '/js/ie/respond.js' ) . '"></script>'. "\n";
+	echo '<![endif]-->'. "\n";
+}
+add_action( 'wp_footer', 'whitehall_theme_ie_js_footer', 20 );
+
 /**
  * Implement the Custom Header feature.
  */
