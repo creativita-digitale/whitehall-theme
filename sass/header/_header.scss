@@ -1,0 +1,59 @@
+.site-header {
+  //we can position other thing inside later
+  position: relative;
+  padding: 1.125em;
+  font-family: $font-_alternate;
+
+  @media screen and ( min-width: $query__small ) {
+
+    padding: 1.125em 2.027em;
+
+  }
+}
+
+.site-branding {
+
+  min-height:65px;
+
+}
+
+.site-title {
+  margin: 0;
+  padding: 0;
+  font-size: 1.602em;
+  font-weight: 800;
+  line-height: 1;
+  
+  a {
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
+
+.site-description {
+  margin: 0;
+  font-size: .9em;
+  font-style: italic;
+  font-weight: 100;
+}
+
+@media screen and ( min-width: $query__medium ) {
+
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .site-branding {
+    width: 35%;
+  }
+
+  .site-navigation {
+    width: 55%;
+  }
+
+}
