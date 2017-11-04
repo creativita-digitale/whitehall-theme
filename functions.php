@@ -157,8 +157,8 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 }
 
 /**
- * Load WooCommerce compatibility file.
+ * Load Plugins.
  */
-if ( class_exists( 'WooCommerce' ) ) {
-	require get_template_directory() . '/inc/woocommerce.php';
+if ( ! class_exists( 'TGM_Plugin_Activation' ) ) {
+	require get_template_directory() . '/inc/plugins/plugins.php';
 }
